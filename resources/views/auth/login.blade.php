@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="og:description" content="Estadisticas de beisbol">
+        <meta name="og:description" content="Estadisticas de fútbol">
         <meta name="robots" content="index, follow">
         <link rel="shortcut icon" href="{{ asset('storage/sistema/favicon.png') }}" type="image/x-icon">
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -16,14 +16,14 @@
         <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
     </head>
     <body class="relative w-full h-full items-center justify-center overflow-hidden text-white bg-no-repeat bg-cover relative" >
-        <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+        <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12 p-4">
             <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-                <div class="absolute inset-0 fondo-primero shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+                <div class="absolute inset-0 fondo-segundo shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
                 </div>
                 <div class="relative px-4 py-4 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                     <div class="max-w-md mx-auto">
                         <div style="text-align: center">
-                            <img src="{{ asset('storage/sistema/logo.png') }}" class="responsive1" style="position:relative; margin:auto" width="150px">
+                            <img src="{{ asset('storage/sistema/A-Stats-futbol.png') }}" class="responsive1" style="position:relative; margin:auto" width="200px">
                         </div>
                         <div class="divide-y divide-gray-200">
                             <x-validation-errors class="mb-4" />
