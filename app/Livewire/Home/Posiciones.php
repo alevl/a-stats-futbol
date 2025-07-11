@@ -30,7 +30,7 @@ class Posiciones extends Component
         ->join('equipos', 'equipos.id', '=', 'posiciones.equipo_id')
         ->where('posiciones.categoria_id', $this->categoria)
         ->where('posiciones.campeonato_id', $this->torneo)
-        ->orderBy('posiciones.porcentaje','desc')
+        ->orderBy('posiciones.puntos','desc')
         ->orderBy('posiciones.ganados','desc')
         ->orderBy('posiciones.perdidos','asc')
         ->get();

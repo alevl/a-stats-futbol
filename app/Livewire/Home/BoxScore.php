@@ -46,16 +46,6 @@ class BoxScore extends Component
         ->orderBy('jugadores_numeros.orden_bat', 'asc')
         ->get();
 
-        $pitcheo_visita = JugadoresNumero::where('juego_id', $this->id_juego)
-        ->select('jugadores_numeros.*','jugadores.nombre as jugador','jugadores.equipo_id as equipo','equipos.nombre as nombre_equipo')
-        ->join('jugadores', 'jugadores.id', '=', 'jugadores_numeros.jugador_id')
-        ->join('equipos', 'equipos.id', '=', 'jugadores.equipo_id')
-        ->where('jugadores_numeros.oponente_id','<>', $this->datos_juego->visita_id)
-        ->where('jugadores_numeros.j','>',0)
-        ->orderBy('equipos.nombre', 'asc')
-        ->orderBy('jugadores.nombre', 'asc')
-        ->get();
-
         $bateo_casa = JugadoresNumero::where('juego_id', $this->id_juego)
         ->select('jugadores_numeros.*','jugadores.nombre as jugador','jugadores.equipo_id as equipo','equipos.nombre as nombre_equipo')
         ->join('jugadores', 'jugadores.id', '=', 'jugadores_numeros.jugador_id')
@@ -66,16 +56,6 @@ class BoxScore extends Component
         ->orderBy('jugadores_numeros.orden_bat', 'asc')
         ->get();
 
-        $pitcheo_casa = JugadoresNumero::where('juego_id', $this->id_juego)
-        ->select('jugadores_numeros.*','jugadores.nombre as jugador','jugadores.equipo_id as equipo','equipos.nombre as nombre_equipo')
-        ->join('jugadores', 'jugadores.id', '=', 'jugadores_numeros.jugador_id')
-        ->join('equipos', 'equipos.id', '=', 'jugadores.equipo_id')
-        ->where('jugadores_numeros.oponente_id','<>', $this->datos_juego->casa_id)
-        ->where('jugadores_numeros.j','>',0)
-        ->orderBy('equipos.nombre', 'asc')
-        ->orderBy('jugadores.nombre', 'asc')
-        ->get();
-
-        return view('livewire.home.box-score')->with('bateo_visita', $bateo_visita)->with('pitcheo_visita', $pitcheo_visita)->with('bateo_casa', $bateo_casa)->with('pitcheo_casa', $pitcheo_casa);
+        return view('livewire.home.box-score')->with('bateo_visita', $bateo_visita)->with('bateo_casa', $bateo_casa);
     }
 }

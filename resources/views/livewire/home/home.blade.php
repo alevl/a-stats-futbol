@@ -6,13 +6,13 @@
             @foreach($noticias as $noti)
                 <div class="rounded-lg shadow-lg cursor-pointer w-full mt-6 mb-6">
                     @if($noti->imagen == "")
-                        <img alt="noticias" src="{{ asset('storage/sistema/fondo-jugador.png') }}" class="object-cover w-full" style="height: 500px"/>
+                        <img alt="noticias" src="{{ asset('storage/sistema/A-Stats-logo.png') }}" class="object-cover w-full" style="height: 250px"/>
                     @else
                         <img alt="noticias" src="{{ asset('storage/'.$noti->imagen) }}" class="object-cover w-full" style="height: 500px"/>
                     @endif
                     <div class="w-full p-4 bg-white dark:bg-gray-800">
                         <p class="font-medium texto-primero text-md">
-                            Liga de Beisbol Menor Zamora
+                            
                         </p>
                         <p class="mb-2 text-xl font-medium text-gray-800 dark:text-white">
                             {{ $noti->titulo }}

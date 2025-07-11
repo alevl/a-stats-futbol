@@ -16,13 +16,13 @@ class JugadoreFactory extends Factory
      */
     public function definition(): array
     {
-        $this->faker->locale('es_ES'); 
-
+        $faker = \Faker\Factory::create('es_VE');
+    
         return [
-            'nombre' => $this->faker->name(),
-            'dni' => $this->faker->numberBetween(10000000, 40000000),
-            'numero' => $this->faker->numberBetween(1, 99),
-            'equipo_id' => $this->faker->numberBetween(1, 5),
+            'nombre' => $faker->firstNameMale . ' ' . $faker->lastName,
+            'dni' => $faker->numberBetween(10000000, 40000000),
+            'numero' => $faker->numberBetween(1, 99),
+            'equipo_id' => $faker->numberBetween(1, 10),
             'foto' => '',
             'Nacimiento' => 'Caracas, 01 de Enero de 2015',
             'batea' => 'Derecha',

@@ -75,7 +75,7 @@
                                             <td class="px-2 py-2">
                                                 <div class="flex-shrink-0 h-10 w-10">
                                                     <img class="h-10 w-10 rounded-full"
-                                                        src="{{asset('storage/sistema/logo.png')}}"
+                                                        src="{{asset('storage/sistema/favicon.png')}}"
                                                         alt="">
                                                 </div>
                                             </td>
@@ -109,7 +109,7 @@
                                             </div>
                                         </td>
                                         <td class="px-2 py-2 text-center">
-                                            <div class="text-sm font-medium text-gray-900">{{number_format($datos_pos->porcentaje,0)}}
+                                            <div class="text-sm font-medium text-gray-900">{{number_format($datos_pos->puntos,0)}}
                                             </div>
                                         </td>
                                     </tr>

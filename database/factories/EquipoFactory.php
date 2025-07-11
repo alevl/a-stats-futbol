@@ -18,12 +18,7 @@ class EquipoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->name(),
-            'abreviacion' => $this->faker->name(),
-            'deporte_id' => 1,
-            'campeonato_id' => 1,
-            'liga_id' => 1,
-            'categoria_id' => 1,
+            
         ];
     }
 }

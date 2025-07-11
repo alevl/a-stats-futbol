@@ -85,154 +85,115 @@
                                 <?php $x=1;?>
                             @endif
 
-                            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg pt-4 pb-2 mt-4 pl-2 pr-2">
-                                <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                    <div class="px-0 py-0 w-full text-sm font-medium text-gray-900">
-                                        <span style="font-size: 0.8em">
-                                            @if($juego->numero_juego <> 0)
-                                                <span class="text-gray-700 mr-2">
-                                                    {{ "Juego ".$juego->numero_juego }}
-                                                </span>
-                                            @endif
-                                            @if($juego->condicion == "Forfeit")
-                                                <strong>
-                                                    <span class="py-1 px-2 rounded" style="background-color: #a3e4d7; color:#0e6251; font-size:0.7em">
-                                                        {{ $juego->condicion }}
-                                                    </span>
-                                                </strong>
-                                            @endif
-                                        </span>
-                                    </div>
-                                    <span>
-                                        {{ $juego->fecha_juego." ".$juego->hora_juego }}
-                                    </span>
-                                </div>
-                                <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                    <span>
-                                        {{ $juego->calendario_estadio->nombre }}
-                                    </span>
-                                    <span class="ml-4 text-gray-500">
-                                        @if($juego->grupo_id <> 10)
-                                            {{ $juego->calendario_grupo->grupo }}
+                            <div class="bg-white shadow-xl sm:rounded-lg p-4 mt-4">
+                                {{-- Encabezado del juego --}}
+                                <div class="flex justify-between items-center mb-2 text-sm text-gray-700">
+                                    <div>
+                                        @if($juego->numero_juego != 0)
+                                            <span class="font-semibold">Juego {{ $juego->numero_juego }}</span>
                                         @endif
-                                    </span>
+                                        @if($juego->condicion == "Forfeit")
+                                            <span class="ml-2 bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">{{ $juego->condicion }}</span>
+                                        @endif
+                                    </div>
+                                    <div>
+                                        {{ $juego->fecha_juego }} {{ $juego->hora_juego }}
+                                    </div>
                                 </div>
-                                <table class="w-full p-0">
+
+                                {{-- Estadio y grupo --}}
+                                <div class="text-sm text-gray-600 mb-4">
+                                    <span>{{ $juego->calendario_estadio->nombre }}</span>
+                                    @if($juego->grupo_id != 10)
+                                        <span class="ml-4 text-gray-500">{{ "(GRUPO ".$juego->calendario_grupo->grupo.")" }}</span>
+                                    @endif
+                                </div>
+
+                                {{-- Tabla de resultados --}}
+                                <table class="w-full text-center text-sm mb-4">
                                     <thead>
-                                        <tr>
-                                            <th>
-                                            </th>
-                                            <th>
-                                            </th>
-                                            <th class="text-center">
-                                                <span style="font-size: 1em"><strong>C</strong></span>
-                                            </th>
-                                            <th class="text-center">
-                                                <span style="font-size: 1em"><strong>H</strong></span>
-                                            </th>
-                                            <th class="text-center">
-                                                <span style="font-size: 1em"><strong>E</strong></span>
-                                            </th>
+                                        <tr class="text-gray-600">
+                                            <th></th>
+                                            <th class="text-left">Equipo</th>
+                                            <th>Goles</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td width="45" class="text-center" >
-                                                <span style="font-size: 1.3em"><img class="h-10 w-10 rounded-full" src="{{asset('storage/sistema/logo.png')}}" alt=""></span>
+                                        {{-- Visitante --}}
+                                        <tr class="border-b">
+                                            <td class="w-12 mr-4">
+                                                <img src="{{ asset('storage/sistema/favicon.png') }}" alt="logo" class="h-10 w-10 rounded-full mx-auto">
                                             </td>
-                                            <td class="text-left p-0">
-                                                <span class="ml-2 text-left" style="font-size: 1em"><strong>{{ $juego->calendario_visita->nombre }}</strong></span>
+                                            <td class="text-left font-semibold">
+                                                {{ $juego->calendario_visita->nombre }}
+                                                <div class="text-xs mt-1">
+                                                    <span class="text-yellow-600 mr-2">🟨 {{ $juego->tarjetas_amarilla_visita ?? 0 }}</span>
+                                                    <span class="text-red-600">🟥 {{ $juego->tarjetas_roja_visita ?? 0 }}</span>
+                                                </div>
                                             </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em;">{{ $juego->anotacion_visita }}</span>
-                                            </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em">{{ $juego->hits_visita }}</span>
-                                            </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em">{{ $juego->errores_visita }}</span>
-                                            </td>
+                                            <td class="text-lg font-bold">{{ $juego->anotacion_visita }}</td>
                                         </tr>
+
+                                        {{-- Local --}}
                                         <tr>
-                                            <td width="45" class="text-center" >
-                                                <span style="font-size: 1.3em"><img class="h-10 w-10 rounded-full" src="{{asset('storage/sistema/logo.png')}}" alt=""></span>
+                                            <td class="w-12">
+                                                <img src="{{ asset('storage/sistema/favicon.png') }}" alt="logo" class="h-10 w-10 rounded-full mx-auto">
                                             </td>
-                                            <td class="text-left p-0">
-                                                <span class="ml-2 text-left" style="font-size: 1em"><strong>{{ $juego->calendario_casa->nombre }}</strong></span>
+                                            <td class="text-left font-semibold">
+                                                {{ $juego->calendario_casa->nombre }}
+                                                <div class="text-xs mt-1">
+                                                    <span class="text-yellow-600 mr-2">🟨 {{ $juego->tarjeta_amarilla_casa ?? 0 }}</span>
+                                                    <span class="text-red-600">🟥 {{ $juego->tarjetas_roja_casa ?? 0 }}</span>
+                                                </div>
                                             </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em;">{{ $juego->anotacion_casa }}</span>
-                                            </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em">{{ $juego->hits_casa }}</span>
-                                            </td>
-                                            <td class="text-center p-0">
-                                                <span style="font-size: 1.7em">{{ $juego->errores_casa }}</span>
-                                            </td>
+                                            <td class="text-lg font-bold">{{ $juego->anotacion_casa }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2 my-2 p-2 rounded mt-2">
-                                    <div class="flex items-center mt-2">
-                                        @if($juego->bat_destacado_id <> '')
-                                            <a href="#" class="relative block">
-                                                <img alt="profil" src="{{asset('storage/sistema/jugador.png')}}" class="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                            <div class="flex flex-col justify-between ml-4 text-sm">
-                                                <p class="text-gray-800 dark:text-white">
-                                                    {{ $juego->calendario_bateador->nombre }}
-                                                </p>
-                                                <p class="text-gray-700 dark:text-gray-700">
-                                                    {{ $juego->texto_bateador }}
-                                                </p>
+
+                                {{-- Jugadores destacados --}}
+                                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                    @if($juego->visita_destacado_id)
+                                        <div class="flex items-center">
+                                            <img src="{{ asset('storage/sistema/jugador.png') }}" alt="bateador" class="h-10 w-10 rounded-full">
+                                            <div class="ml-3 text-sm">
+                                                <p class="text-gray-800 font-semibold">{{ $juego->calendario_bateador->nombre }}</p>
+                                                <p class="text-gray-600">{{ $juego->texto_visita }}</p>
                                             </div>
-                                        @endif
-                                    </div>
-                                    <div class="flex items-center mt-2">
-                                        @if($juego->pit_destacado_id <> '')
-                                            <a href="#" class="relative block">
-                                                <img alt="profil" src="{{asset('storage/sistema/jugador.png')}}" class="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                            <div class="flex flex-col justify-between ml-4 text-sm">
-                                                <p class="text-gray-800 dark:text-white">
-                                                    {{ $juego->calendario_pitcher->nombre }}
-                                                </p>
-                                                <p class="text-gray-700 dark:text-gray-700">
-                                                    {{ $juego->texto_pitcher }}
-                                                </p>
+                                        </div>
+                                    @endif
+
+                                    @if($juego->casa_destacado_id)
+                                        <div class="flex items-center">
+                                            <img src="{{ asset('storage/sistema/jugador.png') }}" alt="pitcher" class="h-10 w-10 rounded-full">
+                                            <div class="ml-3 text-sm">
+                                                <p class="text-gray-800 font-semibold">{{ $juego->calendario_pitcher->nombre }}</p>
+                                                <p class="text-gray-600">{{ $juego->texto_casa }}</p>
                                             </div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                    <span>
-                                        {{ "Anotador : ".$juego->calendario_anotador->nombre}}
-                                    </span>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 rounded mt-2">
-                                    @if($juego->arbitro1_id <> '')
-                                        <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                            {{ "Arbitro : ".$juego->calendario_arbitro1->nombre }}
-                                        </div>
-                                    @endif
-                                    @if($juego->arbitro2_id <> '')
-                                        <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                            {{ "Auxiliar : ".$juego->calendario_arbitro2->nombre }}
-                                        </div>
-                                    @endif
-                                    @if($juego->arbitro3_id <> '')
-                                        <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                            {{ "Auxiliar : ".$juego->calendario_arbitro3->nombre }}
-                                        </div>
-                                    @endif
-                                    @if($juego->arbitro4_id <> '')
-                                        <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700">
-                                            {{ "Auxiliar : ".$juego->calendario_arbitro4->nombre }}
                                         </div>
                                     @endif
                                 </div>
-                                <div class="px-2 py-0 w-full text-sm text-gray-700 dark:text-gray-700 mt-2">
-                                    <a href="{{ route('box-score', $juego->id) }}" class="texto-primero">Resumen</a>
+
+                                {{-- Árbitros y anotador --}}
+                                <div class="text-sm text-gray-700 space-y-1 mb-4">
+                                    <p><strong>Anotador:</strong> {{ $juego->calendario_anotador->nombre }}</p>
+                                    @if($juego->arbitro1_id)
+                                        <p><strong>Árbitro:</strong> {{ $juego->calendario_arbitro1->nombre }}</p>
+                                    @endif
+                                    @if($juego->arbitro2_id)
+                                        <p><strong>Auxiliar:</strong> {{ $juego->calendario_arbitro2->nombre }}</p>
+                                    @endif
+                                    @if($juego->arbitro3_id)
+                                        <p><strong>Auxiliar:</strong> {{ $juego->calendario_arbitro3->nombre }}</p>
+                                    @endif
+                                    @if($juego->arbitro4_id)
+                                        <p><strong>Auxiliar:</strong> {{ $juego->calendario_arbitro4->nombre }}</p>
+                                    @endif
+                                </div>
+
+                                {{-- Link a resumen --}}
+                                <div class="text-right">
+                                    <a href="{{ route('box-score', $juego->id) }}" class="text-blue-600 hover:underline font-medium text-sm">Ver resumen del juego</a>
                                 </div>
                             </div>
                         @endforeach

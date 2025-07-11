@@ -22,7 +22,9 @@ return new class extends Migration
             $table->Integer('ganados')->nullable();
             $table->Integer('perdidos')->nullable();
             $table->Integer('empatados')->nullable();
-            $table->double('porcentaje', 10,2)->nullable();
+            $table->Integer('goles_favor')->nullable();
+            $table->Integer('goles_contra')->nullable();
+            $table->double('puntos', 10,2)->nullable();
             $table->timestamps();
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->foreign('campeonato_id')->references('id')->on('campeonatos')->onDelete('cascade');

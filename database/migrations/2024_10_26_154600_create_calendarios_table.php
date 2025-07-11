@@ -25,10 +25,10 @@ return new class extends Migration
             $table->bigInteger('casa_id')->unsigned()->nullable();
             $table->Integer('anotacion_visita')->nullable();
             $table->Integer('anotacion_casa')->nullable();
-            $table->Integer('hits_visita')->nullable();
-            $table->Integer('hits_casa')->nullable();
-            $table->Integer('errores_visita')->nullable();
-            $table->Integer('errores_casa')->nullable();
+            $table->Integer('tarjetas_amarilla_visita')->nullable();
+            $table->Integer('tarjetas_amarilla_casa')->nullable();
+            $table->Integer('tarjetas_roja_visita')->nullable();
+            $table->Integer('tarjetas_roja_casa')->nullable();
             $table->bigInteger('anotador_id')->unsigned()->nullable();
             $table->bigInteger('arbitro1_id')->unsigned()->nullable();
             $table->bigInteger('arbitro2_id')->unsigned()->nullable();
@@ -36,10 +36,10 @@ return new class extends Migration
             $table->bigInteger('arbitro4_id')->unsigned()->nullable();
             $table->string('observacion', 255)->nullable();
             $table->string('tiempo', 30)->nullable();
-            $table->bigInteger('bat_destacado_id')->unsigned()->nullable();
-            $table->bigInteger('pit_destacado_id')->unsigned()->nullable();
-            $table->string('texto_bateador', 21)->nullable();
-            $table->string('texto_pitcher', 21)->nullable();
+            $table->bigInteger('visita_destacado_id')->unsigned()->nullable();
+            $table->bigInteger('casa_destacado_id')->unsigned()->nullable();
+            $table->string('texto_visita', 21)->nullable();
+            $table->string('texto_casa', 21)->nullable();
             $table->string('condicion', 10)->nullable()->default('Normal');
             $table->bigInteger('facturado_id')->unsigned()->nullable()->default(2);
             $table->Integer('fecha_invertida')->nullable();
@@ -56,8 +56,8 @@ return new class extends Migration
             $table->foreign('arbitro3_id')->references('id')->on('arbitros')->onDelete('cascade');
             $table->foreign('arbitro4_id')->references('id')->on('arbitros')->onDelete('cascade');
             $table->foreign('estadio_id')->references('id')->on('estadios')->onDelete('cascade');
-            $table->foreign('bat_destacado_id')->references('id')->on('jugadores')->onDelete('cascade');
-            $table->foreign('pit_destacado_id')->references('id')->on('jugadores')->onDelete('cascade');
+            $table->foreign('visita_destacado_id')->references('id')->on('jugadores')->onDelete('cascade');
+            $table->foreign('casa_destacado_id')->references('id')->on('jugadores')->onDelete('cascade');
             $table->foreign('facturado_id')->references('id')->on('condiciones')->onDelete('cascade');
         });
     }

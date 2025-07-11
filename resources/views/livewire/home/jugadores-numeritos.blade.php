@@ -15,10 +15,7 @@
                     <spand class="font-bold">Nacimiento:</spand> {{ $jugador->nacimiento }}
                 </p>
                 <p class="mb-1 text-xl font-medium text-gray-800 dark:text-gray-50">
-                    <spand class="font-bold">Batea:</spand> {{ $jugador->batea }}
-                </p>
-                <p class="mb-1 text-xl font-medium text-gray-800 dark:text-gray-50">
-                    <spand class="font-bold">Lanza:</spand> {{ $jugador->lanza }}
+                    <spand class="font-bold">Patea:</spand> {{ $jugador->batea }}
                 </p>
             </div>
 
@@ -31,23 +28,18 @@
                         <tr class="fondo-primero text-white">
                             <th class=" p-2">Torneo</th>
                             <th class=" p-2">Categoría</th>
-                            <th class=" p-2">J</th>
-                            <th class=" p-2">VB</th>
-                            <th class=" p-2">CA</th>
-                            <th class=" p-2">H</th>
-                            <th class=" p-2">BB</th>
-                            <th class=" p-2">SF</th>
-                            <th class=" p-2">GP</th>
-                            <th class=" p-2">AL</th>
-                            <th class=" p-2">2B</th>
-                            <th class=" p-2">3B</th>
-                            <th class=" p-2">HR</th>
-                            <th class=" p-2">BA</th>
-                            <th class=" p-2">CI</th>
-                            <th class=" p-2">BR</th>
-                            <th class=" p-2">K</th>
-                            <th class=" p-2">AVG</th>
-                            <th class=" p-2">SLG</th>
+                            <th class=" p-2" title="Juegos">J</th>
+                            <th class=" p-2" title="Goles">GOLES</th>
+                            <th class=" p-2" title="Asistencias">ASIS.</th>
+                            <th class=" p-2" title="Tiros al Arco">TIROS</th>
+                            <th class=" p-2" title="Faltas Cometidas">FC</th>
+                            <th class=" p-2" title="Faltas Recibidas">FR</th>
+                            <th class=" p-2" title="Tarjetas Amarillas">TA</th>
+                            <th class=" p-2" title="Tarjetas Rojas">TR</th>
+                            <th class=" p-2" title="Penales Cobrados">PC</th>
+                            <th class=" p-2" title="Penales Fallidos">PF</th>
+                            <th class=" p-2" title="Fuera de Juego">OFF</th>
+                            <th class=" p-2" title="Atajadas">ATA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,178 +55,38 @@
                                     {{ $temporada->juegos }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->vb }}
+                                    {{ $temporada->goles }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->anotadas }}
+                                    {{ $temporada->asistencias }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->hit }}
+                                    {{ $temporada->tiros_arco }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->boletos_recibidos }}
+                                    {{ $temporada->faltas_cometidas }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->sacrificios }}
+                                    {{ $temporada->faltas_recibidas }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->golpeados }}
+                                    {{ $temporada->tarjetas_amarilla }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->apariciones }}
+                                    {{ $temporada->tarjetas_roja }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->dobles }}
+                                    {{ $temporada->penales_cobrados }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->triples }}
+                                    {{ $temporada->penales_fallados }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->hr }}
+                                    {{ $temporada->fuera_juego }}
                                 </td>
                                 <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->alcanzadas }}
+                                    {{ $temporada->atajadas }}
                                 </td>
-                                <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->rbi }}
-                                </td>
-                                <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->robadas }}
-                                </td>
-                                <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                    {{ $temporada->ponches }}
-                                </td>
-                                @if($temporada->vb > 0)
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ number_format($temporada->porcentaje_bateo,0) }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ number_format($temporada->porcentaje_slugging,0) }}
-                                    </td>
-                                @else
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-
-                                    </td>
-                                @endif
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-6">
-                <span class="text-2xl font-semi-bold leading-normal">Numeritos (Pitcher)</span>
-            </div>
-            <div style="overflow-x:auto">
-                <table class="w-full mt-4 table bg-white rounded-lg shadow mb-12" style="font-size: 0.8em">
-                    <thead>
-                        <tr class="fondo-primero text-white">
-                            <th class=" p-2">Torneo</th>
-                            <th class=" p-2">Categoría</th>
-                            <th class=" p-2">J</th>
-                            <th class=" p-2">I</th>
-                            <th class=" p-2">R</th>
-                            <th class=" p-2">C</th>
-                            <th class=" p-2">G</th>
-                            <th class=" p-2">P</th>
-                            <th class=" p-2">SV</th>
-                            <th class=" p-2">VB</th>
-                            <th class=" p-2">HP</th>
-                            <th class=" p-2">H2</th>
-                            <th class=" p-2">H3</th>
-                            <th class=" p-2">H4</th>
-                            <th class=" p-2">IP</th>
-                            <th class=" p-2">CP</th>
-                            <th class=" p-2">CL</th>
-                            <th class=" p-2">K</th>
-                            <th class=" p-2">BB</th>
-                            <th class=" p-2">GP</th>
-                            <th class=" p-2">WP</th>
-                            <th class=" p-2">BK</th>
-                            <th class=" p-2">NP</th>
-                            <th class=" p-2">ERA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($numeros_temporadas as $temporada)
-                            @if($temporada->j > 0)
-                                <tr class="text-gray-700 odd:bg-blue-50 even:bg-red-50">
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-left">
-                                        {{ $temporada->campeonato }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-left">
-                                        {{ $temporada->categoria }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->j }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->iniciados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->relevos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->completos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ganados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->perdidos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->salvados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->veces_bate }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->hp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h2 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h3 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h4 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ip }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->carreras_permitidas }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->carreras_limpias }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ponches_propinados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->boletos_otorgados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->gp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->wp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->bk }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->pitcheos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ number_format($temporada->porcentaje_efectividad,2) }}
-                                    </td>
-                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -252,22 +104,17 @@
                             <th class=" p-2">Fecha</th>
                             <th class=" p-2">Categoría</th>
                             <th class=" p-2">Oponente</th>
-                            <th class=" p-2">VB</th>
-                            <th class=" p-2">CA</th>
-                            <th class=" p-2">H</th>
-                            <th class=" p-2">BB</th>
-                            <th class=" p-2">SF</th>
-                            <th class=" p-2">GP</th>
-                            <th class=" p-2">AL</th>
-                            <th class=" p-2">2B</th>
-                            <th class=" p-2">3B</th>
-                            <th class=" p-2">HR</th>
-                            <th class=" p-2">BA</th>
-                            <th class=" p-2">CI</th>
-                            <th class=" p-2">BR</th>
-                            <th class=" p-2">K</th>
-                            <th class=" p-2">AVG</th>
-                            <th class=" p-2">SLG</th>
+                            <th class=" p-2" title="Goles">GOLES</th>
+                            <th class=" p-2" title="Asistencias">ASIS.</th>
+                            <th class=" p-2" title="Tiros al Arco">TIROS</th>
+                            <th class=" p-2" title="Faltas Cometidas">FC</th>
+                            <th class=" p-2" title="Faltas Recibidas">FR</th>
+                            <th class=" p-2" title="Tarjetas Amarillas">TA</th>
+                            <th class=" p-2" title="Tarjetas Rojas">TR</th>
+                            <th class=" p-2" title="Penales Cobrados">PC</th>
+                            <th class=" p-2" title="Penales Fallidos">PF</th>
+                            <th class=" p-2" title="Fuera de Juego">OFF</th>
+                            <th class=" p-2" title="Atajadas">ATA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -284,172 +131,40 @@
                                         {{ $temporada->oponente }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->vb }}
+                                        {{ $temporada->goles }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->anotadas }}
+                                        {{ $temporada->asistencias }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->hit }}
+                                        {{ $temporada->tiros_arco }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->boletos_recibidos }}
+                                        {{ $temporada->faltas_cometidas }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->sacrificios }}
+                                        {{ $temporada->faltas_recibidas }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->golpeados }}
+                                        {{ $temporada->tarjetas_amarilla }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->apariciones }}
+                                        {{ $temporada->tarjetas_roja }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->dobles }}
+                                        {{ $temporada->penales_cobrados }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->triples }}
+                                        {{ $temporada->penales_fallados }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->hr }}
+                                        {{ $temporada->fuera_juego }}
                                     </td>
                                     <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->alcanzadas }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->rbi }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->robadas }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ponches }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->average }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->slugging }}
+                                        {{ $temporada->atajadas }}
                                     </td>
                                 </tr>
                             @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-6">
-                <span class="text-2xl font-semi-bold leading-normal">Mis Juegos (Pitcher)</span>
-            </div>
-
-            <div style="overflow-x:auto">
-                <table class="w-full mt-4 table bg-white rounded-lg shadow mb-6" style="font-size: 0.8em">
-                    <thead>
-                        <tr class="fondo-primero text-white">
-                            <th class=" p-2">Fecha</th>
-                            <th class=" p-2">Categoría</th>
-                            <th class=" p-2">Oponente</th>
-                            <th class=" p-2">I</th>
-                            <th class=" p-2">R</th>
-                            <th class=" p-2">C</th>
-                            <th class=" p-2">G</th>
-                            <th class=" p-2">P</th>
-                            <th class=" p-2">SV</th>
-                            <th class=" p-2">VB</th>
-                            <th class=" p-2">HP</th>
-                            <th class=" p-2">H2</th>
-                            <th class=" p-2">H3</th>
-                            <th class=" p-2">H4</th>
-                            <th class=" p-2">IP</th>
-                            <th class=" p-2">CP</th>
-                            <th class=" p-2">CL</th>
-                            <th class=" p-2">K</th>
-                            <th class=" p-2">BB</th>
-                            <th class=" p-2">GP</th>
-                            <th class=" p-2">WP</th>
-                            <th class=" p-2">BK</th>
-                            <th class=" p-2">NP</th>
-                            <th class=" p-2">ERA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($juegos_totales as $temporada)
-                            @if($temporada->j > 0)
-                                <tr class="text-gray-700 odd:bg-blue-50 even:bg-red-50">
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-left">
-                                        {{ $temporada->fecha }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-left">
-                                        {{ $temporada->categoria }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-left">
-                                        {{ $temporada->oponente }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->iniciados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->relevos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->completos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ganados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->perdidos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->salvados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->veces_bate }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->hp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h2 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h3 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->h4 }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ip }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->carreras_permitidas }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->carreras_limpias }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->ponches_propinados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->boletos_otorgados }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->gp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->wp }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->bk }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ $temporada->pitcheos }}
-                                    </td>
-                                    <td class="border-b-2 p-2 dark:border-dark-5 text-center">
-                                        {{ number_format($temporada->efectividad,2) }}
-                                    </td>
-                                @endif
-                            </tr>
                         @endforeach
                     </tbody>
                 </table>
