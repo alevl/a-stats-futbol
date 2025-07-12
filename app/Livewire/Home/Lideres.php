@@ -17,7 +17,6 @@ class Lideres extends Component
     public $sort2 = 'posicion';
     public $direc = 'asc';
 
-
     public function updatedCategoria($value)
     {
         $this->torneo = null;

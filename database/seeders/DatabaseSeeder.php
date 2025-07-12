@@ -200,9 +200,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 25,
             'perdidos' => 4,
             'empatados' => 1,
-            'goles_favor' => 25, 
-            'goles_contra' => 10,
-            'puntos' => 54,
+            'puntos' => 76,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -213,9 +211,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 20,
             'perdidos' => 10,
             'empatados' => 0,
-            'goles_favor' => 18,
-            'goles_contra' => 12,
-            'puntos' => 54,
+            'puntos' => 60,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -226,9 +222,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 22,
             'perdidos' => 4,
             'empatados' => 4,
-            'goles_favor' => 25,
-            'goles_contra' => 35,
-            'puntos' => 54,
+            'puntos' => 70,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -239,9 +233,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 25,
             'perdidos' => 4,
             'empatados' => 1,
-            'goles_favor' => 17,
-            'goles_contra' => 10,
-            'puntos' => 54,
+            'puntos' => 76,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -252,9 +244,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 15,
             'perdidos' => 10,
             'empatados' => 5,
-            'goles_favor' => 15,
-            'goles_contra' => 32,
-            'puntos' => 54,
+            'puntos' => 50,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -265,9 +255,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 25,
             'perdidos' => 15,
             'empatados' => 5,
-            'goles_favor' => 10,
-            'goles_contra' => 42,
-            'puntos' => 54,
+            'puntos' => 80,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -278,8 +266,6 @@ class DatabaseSeeder extends Seeder
             'ganados' => 18,
             'perdidos' => 12,
             'empatados' => 0,
-            'goles_favor' => 32,
-            'goles_contra' => 32,
             'puntos' => 54,
         ]);
         \App\Models\Posicione::create([
@@ -291,9 +277,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 19,
             'perdidos' => 11,
             'empatados' => 0,
-            'goles_favor' => 27,
-            'goles_contra' => 20,
-            'puntos' => 54,
+            'puntos' => 57,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -304,9 +288,7 @@ class DatabaseSeeder extends Seeder
             'ganados' => 10,
             'perdidos' => 20,
             'empatados' => 0,
-            'goles_favor' => 18, 
-            'goles_contra' => 12,
-            'puntos' => 54,
+            'puntos' => 30,
         ]);
         \App\Models\Posicione::create([
             'categoria_id' => 1,
@@ -317,8 +299,6 @@ class DatabaseSeeder extends Seeder
             'ganados' => 17,
             'perdidos' => 10,
             'empatados' => 3,
-            'goles_favor' => 33,
-            'goles_contra' => 22,
             'puntos' => 54,
         ]);
 

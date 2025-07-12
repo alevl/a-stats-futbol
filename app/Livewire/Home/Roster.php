@@ -12,7 +12,7 @@ class Roster extends Component
 {
     public $id_jugador, $torneo=1, $categoria=1, $torneos=[], $categorias=[];
 
-    public $sort = 'jugadores.nombre';
+    public $sort = 'equipos.nombre';
     public $direccion = 'asc';
     public $tipo = 'bateador';
 
